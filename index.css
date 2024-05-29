@@ -32,6 +32,36 @@ div#header_bingo {
     justify-content: space-around;
 }
 
+div#body_cartelas{
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    margin: 5px;
+
+}
+
+table, th,td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th,td{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+
+}
+div.cartelas h4{
+    margin-bottom: 5px;
+}
+div.cartelas{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 button {
     width: 100px;
     height: 30px;
