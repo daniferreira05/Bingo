@@ -7,7 +7,7 @@
 
 header {
     height: 20vh;
-    width: 100%;
+    width: 100vw;
     background-color: #9a6ec4;
     display: flex;
     align-items: center;
