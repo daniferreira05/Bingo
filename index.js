@@ -1,6 +1,6 @@
+function desenharCartela(jogador) {
 
-
-function desenharCartela() {
+    gerarCartela();
 
     // Selecionar onde se deseja criar o elemento
     const pai_div_cartelas = document.getElementById('body_cartelas');
@@ -14,7 +14,7 @@ function desenharCartela() {
 
     //Criar um elemnto de texto para o Nome do jogador
     const h4_jogador = document.createElement('h4');
-    h4_jogador.innerText = 'Nome jogador';
+    h4_jogador.innerText = jogador.nome;
 
 
     //Inserir o nome do jogador na div
@@ -24,10 +24,6 @@ function desenharCartela() {
     const tabela = document.createElement('table');
     const thead = document.createElement('thead');
     const tbody = document.createElement('tbody');
-
-
-
-
 
     //Criando os elemtos do thead
     const thB = document.createElement('th');
@@ -49,26 +45,60 @@ function desenharCartela() {
     thead.appendChild(thG);
     thead.appendChild(thO);
 
-    for(var i = 0; i < 5; i++){
+    for (var i = 0; i < 5; i++) {
         const tr = document.createElement('tr');
-        for(var j = 0; j < 5; j++){
+        for (var j = 0; j < 5; j++) {
             const td = document.createElement('td');
-            td.innerText = 'X';
+            td.innerText = jogador.cartela[j][i];
             tr.appendChild(td);
         }
         tbody.appendChild(tr);
     }
 
 
-
-
-
-
     //Iserir na tabela
     div_cartelas.appendChild(tabela);
     tabela.appendChild(thead);
     tabela.appendChild(tbody);
+}
+
+function gerarColuna(quantidade, inicio, fim) {
+    var coluna = [];
+    while (coluna.length < quantidade) {
+        var aleatorio = Math.floor(Math.random() * (fim - inicio) + inicio);
+        if (!coluna.includes(aleatorio)) {
+            coluna.push(aleatorio);
+        }
+
+    }
+    return coluna;
+}
 
 
+function gerarCartela() {
+    var cartela = [gerarColuna(5, 1, 15), gerarColuna(5, 16, 30), gerarColuna(5, 31, 45), gerarColuna(5, 46, 60), gerarColuna(5, 61, 75)];
 
+
+    console.log(cartela);
+    return cartela;
+
+}
+
+function inscreverJogador() {
+    const nome = prompt('Digite o nome do jogador: ');
+
+
+    if (nome.length < 4) {
+        alert('O nome precisa ter mais de 4 caracteres');
+        return;
+    }
+
+    const cartela = gerarCartela();
+
+    const jogador = {
+        nome: nome,
+        cartela: cartela
+    }
+
+    desenharCartela(jogador);
 }
